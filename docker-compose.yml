@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8n-with-ffmpeg:1.122.5-20251208182708
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_DEFAULT_LOCALE=zh-CN
+      - N8N_EDITOR_BASE_URL=https://n8n.adorado.top
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - WEBHOOK_URL=https://n8n.adorado.top/
+      - N8N_HOST=n8n.adorado.top
+      - GENERIC_TIMEZONE=Asia/Shanghai
+      - TZ=Asia/Shanghai
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
+      - N8N_RUNNERS_ENABLED=false
+      - N8N_SECURE_COOKIE=false
+      - N8N_COMMUNITY_NODES_ENABLED=false
+      - N8N_DEFAULT_BINARY_DATA_MODE=filesystem
+      - LOG_LEVEL=debug
+      - N8N_LOG_OUTPUT_FORMATTER=simple
+      
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - /home1/n8n/files:/home/node/files
+    shm_size: '256mb'
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "7"
+        compress: "true"
+        tag: "{{.Name}}/{{.ImageName}}"
+volumes:
+  n8n_data:
+    external: true
+
