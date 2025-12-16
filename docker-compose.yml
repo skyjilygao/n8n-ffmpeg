@@ -9,10 +9,10 @@ services:
       - "5678:5678"
     environment:
       - N8N_DEFAULT_LOCALE=zh-CN
-      - N8N_EDITOR_BASE_URL=https://n8n.adorado.top
+      - N8N_EDITOR_BASE_URL=https://n8n.xxx.top
       - N8N_DIAGNOSTICS_ENABLED=false
-      - WEBHOOK_URL=https://n8n.adorado.top/
-      - N8N_HOST=n8n.adorado.top
+      - WEBHOOK_URL=https://n8n.xxx.top/
+      - N8N_HOST=n8n.xxx.top
       - GENERIC_TIMEZONE=Asia/Shanghai
       - TZ=Asia/Shanghai
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
